@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     height: '25%',
     backgroundColor: global.primaryColor,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center',    
  },
  logo:{    
     paddingTop: 40

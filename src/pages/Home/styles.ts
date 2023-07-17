@@ -4,6 +4,7 @@ import global from '../../theme/global'
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: global.banckgroundColor
     },
     title:{
         fontSize: 20,

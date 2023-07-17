@@ -1,11 +1,13 @@
-import { Text, StyleSheet, SafeAreaView } from 'react-native'
+import { StyleSheet, SafeAreaView, StatusBar } from 'react-native'
 import React from 'react'
-import { Home } from './src/pages/Home';
+// import { Home } from './src/pages/Home';
+import { Header } from './src/components/Header';
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <Home />
+      <StatusBar barStyle={'light-content'} translucent/>
+      <Header />
     </SafeAreaView>
   )
 }

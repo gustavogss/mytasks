@@ -1,10 +1,10 @@
 import { StyleSheet } from "react-native";
-import global from '../../theme/global'
+import {theme} from '../../theme'
 
 const styles = StyleSheet.create({
  container:{
     height: '25%',
-    backgroundColor: global.primaryColor,
+    backgroundColor: theme.colors.primaryColor,
     justifyContent: 'center',
     alignItems: 'center',    
  },

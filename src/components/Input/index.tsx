@@ -9,6 +9,7 @@ export function Input() {
       <TextInput 
       style={styles.input}
       placeholder='Adicione uma tarefa nova'
+      keyboardType='default'
       />
       <TouchableOpacity style={styles.btn}>
           <Feather name='plus' size={24} color={'white'}/>

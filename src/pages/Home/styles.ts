@@ -13,15 +13,37 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: theme.colors.primaryColor
     },
-    resultado: {
+    tasks:{
+        flexDirection: 'row',
+        justifyContent: 'space-between',        
+        marginHorizontal: 24, 
+        marginTop: 20, 
+        marginBottom: 20,
+    },
+    taskCreate: {
         fontSize: 18,
-        fontFamily: theme.font_family.ligth,
-        padding: 20,        
+        fontFamily: theme.font_family.ligth,               
         color: theme.colors.textColorDark
     },
-    areaResultado:{
+    taskFinish: {
+        fontSize: 18,
+        fontFamily: theme.font_family.ligth,             
+        color: theme.colors.secondColor
+    },
+    areaTask:{
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
+    count:{
+        color: theme.colors.textColorLigth,
+        fontSize: 16,
+        fontWeight: '300',
+        marginLeft: 10,
+        backgroundColor: theme.colors.primaryColor,
+        padding: 5,
+        borderRadius: 50
     }
+   
 })
 export default styles;

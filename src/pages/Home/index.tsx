@@ -1,11 +1,17 @@
 import { View, Text, FlatList } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './styles';
 import { Header } from '../../components/Header';
 import { Input } from '../../components/Input';
 import { Task } from '../../components/Task';
+import { TaskProps } from '../../Interfaces';
 
 export function Home() {
+  const [task, setTask] = useState<TaskProps[]>([
+    { id: '1', isTaskCompleted: false, title: 'Estudar React Native' },
+    { id: '2', isTaskCompleted: false, title: 'Estudar Node' },
+    { id: '3', isTaskCompleted: true, title: 'Estudar Javascript' }
+  ]);
   return (
     <View style={styles.container}>
       <Header />
@@ -21,14 +27,22 @@ export function Home() {
         </View>
        
       </View >
-      <Task title='Estudar React Native' isTaskCompleted={false}/>
-      <Task title='Estudar React' isTaskCompleted />
-      <Task title='Estudar Java Script' isTaskCompleted />
+
+      <FlatList 
+      data={task}
+      keyExtractor={(task) => task.id!}
+      showsVerticalScrollIndicator={false}      
+      renderItem={({item})=> (
+      <Task 
+      key={item.id} 
+      isTaskCompleted={item.isTaskCompleted}
+      title={item.title}
+      />
+      )}      
+      />
+    
       
-      {/* <FlatList 
-      showsVerticalScrollIndicator={false}
-      
-      /> */}
+    
     </View>
   )
 }

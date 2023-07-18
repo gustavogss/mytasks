@@ -3,12 +3,7 @@ import React from "react";
 import { Feather } from "@expo/vector-icons";
 import { theme } from "../../theme";
 import styles from "./styles";
-
-type TaskProps = {
-  id?: string;
-  title: string;
-  isTaskCompleted: boolean;
-}
+import {TaskProps} from '../../Interfaces';
 
 export function Task({title, isTaskCompleted}: TaskProps) {
   return (

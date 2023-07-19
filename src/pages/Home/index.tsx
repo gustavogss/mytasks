@@ -6,18 +6,24 @@ import { Input } from '../../components/Input';
 import { Task } from '../../components/Task';
 import { ITask } from '../../Interfaces';
 import { Empty } from '../../components/Empty';
+import { uuid } from '../../../utils/uuid';
 
 
 export function Home() {
-  const [task, setTask] = useState<ITask[]>([
+  const [tasks, setTasks] = useState<ITask[]>([
     // { id: '1', isTaskCompleted: false, title: 'Estudar React Native' },
     // { id: '2', isTaskCompleted: false, title: 'Estudar Node' },
     // { id: '3', isTaskCompleted: true, title: 'Estudar Javascript' }
   ]);
+  const [newTask, setNewTask] = useState('');
+  function handleAddTask() {
+    setTasks((tasks) => [...tasks, {id: uuid(), isTaskCompleted: false, title: newTask}]); 
+    setNewTask('');
+  }
   return (
     <View style={styles.container}>
       <Header />
-      <Input />
+      <Input task={newTask} onChangeText={setNewTask} onPress={handleAddTask}/>
       <View style={styles.tasks}>
         <View style={styles.areaTask}>
         <Text style={styles.taskCreate}>Criadas: </Text>
@@ -30,7 +36,7 @@ export function Home() {
       </View >
 
       <FlatList 
-      data={task}
+      data={tasks}
       keyExtractor={(task) => task.id!}
       showsVerticalScrollIndicator={false}      
       renderItem={({item})=> (

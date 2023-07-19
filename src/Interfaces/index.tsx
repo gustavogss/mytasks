@@ -3,3 +3,9 @@ export interface ITask {
     title: string;
     isTaskCompleted: boolean;
 }
+
+export interface IInput {
+    task: string;
+    onChangeText: (task: string) => void;  
+    onPress: () => void;    
+}

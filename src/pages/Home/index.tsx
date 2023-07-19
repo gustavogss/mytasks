@@ -1,16 +1,18 @@
 import { View, Text, FlatList } from 'react-native'
 import React, { useState } from 'react'
-import styles from './styles';
+import {styles} from './styles';
 import { Header } from '../../components/Header';
 import { Input } from '../../components/Input';
 import { Task } from '../../components/Task';
-import { TaskProps } from '../../Interfaces';
+import { ITask } from '../../Interfaces';
+import { Empty } from '../../components/Empty';
+
 
 export function Home() {
-  const [task, setTask] = useState<TaskProps[]>([
-    { id: '1', isTaskCompleted: false, title: 'Estudar React Native' },
-    { id: '2', isTaskCompleted: false, title: 'Estudar Node' },
-    { id: '3', isTaskCompleted: true, title: 'Estudar Javascript' }
+  const [task, setTask] = useState<ITask[]>([
+    // { id: '1', isTaskCompleted: false, title: 'Estudar React Native' },
+    // { id: '2', isTaskCompleted: false, title: 'Estudar Node' },
+    // { id: '3', isTaskCompleted: true, title: 'Estudar Javascript' }
   ]);
   return (
     <View style={styles.container}>
@@ -24,8 +26,7 @@ export function Home() {
         <View style={styles.areaTask}>
         <Text style={styles.taskFinish}>Concluídas: </Text>
         <Text style={styles.count}>0</Text>
-        </View>
-       
+        </View>       
       </View >
 
       <FlatList 
@@ -38,7 +39,8 @@ export function Home() {
       isTaskCompleted={item.isTaskCompleted}
       title={item.title}
       />
-      )}      
+      )}  
+      ListEmptyComponent={<Empty />}    
       />
     
       

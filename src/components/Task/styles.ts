@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 import { theme } from "../../theme";
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
     container: {         
         margin: 5,
         padding: 20,   
@@ -25,4 +25,3 @@ const styles = StyleSheet.create({
         textDecorationLine: 'line-through'
     }
 })
-export default styles;

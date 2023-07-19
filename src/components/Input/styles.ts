@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 import { theme } from "../../theme";
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
     width: "100%",
     flexDirection: "row",
@@ -29,4 +29,4 @@ const styles = StyleSheet.create({
     marginRight: 2
   },
 });
-export default styles;
+

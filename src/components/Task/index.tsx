@@ -2,10 +2,10 @@ import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import { Feather } from "@expo/vector-icons";
 import { theme } from "../../theme";
-import styles from "./styles";
-import {TaskProps} from '../../Interfaces';
+import {styles} from "./styles";
+import {ITask} from '../../Interfaces';
 
-export function Task({title, isTaskCompleted}: TaskProps) {
+export function Task({title, isTaskCompleted}: ITask) {
   return (
     <View style={styles.container}>
       <TouchableOpacity>

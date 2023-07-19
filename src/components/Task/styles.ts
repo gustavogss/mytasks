@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
     taskDone:{
         flex: 1,
         fontFamily: theme.font_family.ligth,
-        color: theme.colors.textColorDark,
+        color: theme.colors.secondColor,
         marginHorizontal: 8,
         textDecorationLine: 'line-through'
     }

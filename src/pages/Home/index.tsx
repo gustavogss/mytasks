@@ -9,12 +9,12 @@ import { Empty } from "../../components/Empty";
 import { uuid } from "../../../utils/uuid";
 
 export function Home() {
-  const [tasks, setTasks] = useState<ITask[]>([
-    // { id: '1', isTaskCompleted: false, title: 'Estudar React Native' },
-    // { id: '2', isTaskCompleted: false, title: 'Estudar Node' },
-    // { id: '3', isTaskCompleted: true, title: 'Estudar Javascript' }
-  ]);
+  const [tasks, setTasks] = useState<ITask[]>([]);
   const [newTask, setNewTask] = useState("");
+
+  const totalTasksCreated = tasks.length;
+  const totalTasksDone = tasks.filter(({isTaskCompleted}) => isTaskCompleted).length;
+
   function handleAddTask() {
     if (newTask !== "" && newTask.length >= 5) {
       setTasks((tasks) => [
@@ -30,14 +30,27 @@ export function Home() {
     }
   }
   function handleRemoveTask(id: string) {
-   setTasks((task) => task.filter((task) => task.id !== id))
-    
+    Alert.alert("Excluir tarefa", "Deseja remover essa tarefa?", [
+      {
+        text: "Sim",
+        style: "default",
+        onPress: () => {
+          setTasks((task) => task.filter((task) => task.id !== id));
+        },
+      },
+      {
+        text: "Não",
+        style: "cancel",
+      },
+    ]);
   }
   function handleDoneTask(id: string) {
-   setTasks((task) => task.map((task) => {
-    task.id === id ? (task.isTaskCompleted = !task.isTaskCompleted): null
-    return task
-   }));
+    setTasks((task) =>
+      task.map((task) => {
+        task.id === id ? (task.isTaskCompleted = !task.isTaskCompleted) : null;
+        return task;
+      })
+    );
   }
   return (
     <View style={styles.container}>
@@ -46,21 +59,20 @@ export function Home() {
       <View style={styles.tasks}>
         <View style={styles.areaTask}>
           <Text style={styles.taskCreate}>Criadas: </Text>
-          <Text style={styles.count}>1</Text>
+          <Text style={styles.count}>{totalTasksCreated}</Text>
         </View>
         <View style={styles.areaTask}>
           <Text style={styles.taskFinish}>Concluídas: </Text>
-          <Text style={styles.count}>0</Text>
+          <Text style={styles.count}>{totalTasksDone}</Text>
         </View>
       </View>
-
       <FlatList
         data={tasks}
         keyExtractor={(task) => task.id!}
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) => (
           <Task
-            key={item.id}            
+            key={item.id}
             onTaskDone={() => handleDoneTask(item.id)}
             onTaskRemove={() => handleRemoveTask(item.id)}
             {...item}

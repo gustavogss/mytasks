@@ -21,12 +21,15 @@ export const styles = StyleSheet.create({
   input: {
     width: "80%",
     padding: 11,
-    backgroundColor: theme.colors.textColorDark,
-    color: theme.colors.banckgroundColor,
+    backgroundColor: theme.colors.inputColor,
+    color: theme.colors.backgroundColor,
     fontSize: 20,
     fontWeight: "300",
-    borderRadius: 5,
+    borderRadius: 10,
     marginRight: 2
   },
+  inputBorder:{
+    borderColor: theme.colors.secondColor
+  }
 });
 

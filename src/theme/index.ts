@@ -1,7 +1,8 @@
  export const theme = {
     colors: {
         primaryColor: '#212121',
-        banckgroundColor: '#000000',
+        backgroundColor: '#000000',
+        inputColor: '#121212',
         secondColor: '#7619BF',
         textColorLigth: '#eee',
         textColorDark: '#ccc',

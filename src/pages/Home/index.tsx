@@ -1,5 +1,5 @@
-import { View, Text, FlatList, Alert } from "react-native";
-import React, { useState } from "react";
+import { View, Text, FlatList, Alert, TextInput } from "react-native";
+import React, { useRef, useState } from "react";
 import { styles } from "./styles";
 import { Header } from "../../components/Header";
 import { Input } from "../../components/Input";
@@ -11,6 +11,7 @@ import { uuid } from "../../../utils/uuid";
 export function Home() {
   const [tasks, setTasks] = useState<ITask[]>([]);
   const [newTask, setNewTask] = useState("");
+  const newTaskRef = useRef<TextInput>(null);
 
   const totalTasksCreated = tasks.length;
   const totalTasksDone = tasks.filter(({isTaskCompleted}) => isTaskCompleted).length;
@@ -28,6 +29,7 @@ export function Home() {
         "Digite uma tarefa com mais de 5 caracteres"
       );
     }
+    newTaskRef.current?.blur()
   }
   function handleRemoveTask(id: string) {
     Alert.alert("Excluir tarefa", "Deseja remover essa tarefa?", [
@@ -55,7 +57,12 @@ export function Home() {
   return (
     <View style={styles.container}>
       <Header />
-      <Input task={newTask} onChangeText={setNewTask} onPress={handleAddTask} />
+      <Input 
+      inputRef = {newTaskRef}
+      task={newTask} 
+      onChangeText={setNewTask} 
+      onPress={handleAddTask}
+       />
       <View style={styles.tasks}>
         <View style={styles.areaTask}>
           <Text style={styles.taskCreate}>Criadas: </Text>
